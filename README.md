@@ -24,5 +24,9 @@
 4.5.	Можливість пошуку студентів відповідної групи
 
 
-Data flow:
-Data flow
+
+Write in GitBash git clone https://github.com/luckansone/FoodInfoAnalysis.git
+Open program using VS2017
+Restore Nuget packages
+Run program
+Write in browser http://localhost:50606/swagger/index.html
