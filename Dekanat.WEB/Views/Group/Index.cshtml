@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Dekanat.WEB.Models.GroupViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3>Пошук за факультетом</h3>
+
+
+
+@using (Ajax.BeginForm("GroupsSearch", new AjaxOptions { UpdateTargetId = "results" }))
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="text" name="facult" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Пошук" class="btn btn-info" />
+            </div>
+        </div>
+    </div>
+}
+<div id="results"></div>
+<h3>Список усіх груп</h3>
+<p>
+    @Html.ActionLink("Додати групу", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Назва групи")
+        </th>
+        <th>
+            @Html.DisplayName("Кількість студентів")
+        </th>
+        <th>
+            @Html.DisplayName("Курс")
+        </th>
+        <th>
+            @Html.DisplayName("Факультет: ")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount_of_students)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Course)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Faculty)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Редагувати дані групи", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Видалити", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+    }
+
+</table>
